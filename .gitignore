@@ -1,0 +1,23 @@
+# Virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Diagnostic/debug artifacts from local testing
+_test_run.py
+_test_run_output.log
+_torch_install.log
+
+# Sample input PDF (download your own from arxiv.org/abs/1706.03762)
+attention.pdf
+
+# Edureka bootcamp course materials (copyrighted, not for redistribution)
+Build a RAG Pipeline from Scratch (1) (2).pptx
+Doc Chatbot Using ChromaDB and Mistral - Solution Doc.pdf
+Problem Statement Doc Chatbot Using Chroma DB and Mistral AI Bootcamp.pdf
+DOC_QA_Chatbot__Final.ipynb
+
+# Hugging Face model cache, if ever created locally in-repo
+.cache/
