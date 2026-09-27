@@ -44,6 +44,23 @@ No API keys are required — every model runs locally within the notebook's own 
 
 **With retrieval:** the model is handed the paper's actual attention formula and multi-head attention description before answering, producing a response grounded in the retrieved text — along with the similarity scores behind that retrieval.
 
+## Future Improvements
+
+**Performance**
+- Quantize the model (4-bit/8-bit via `bitsandbytes`) to cut memory use and speed up both loading and generation.
+- Persist ChromaDB to disk (`PersistentClient`) instead of the in-memory client, so chunks and embeddings don't need to be recomputed every session.
+- Stream the output token-by-token (`TextStreamer`) instead of waiting for the full response before showing anything.
+
+**Features**
+- **Source citations** — track which chunk/page each part of an answer came from, and show that alongside the answer.
+- **Multi-document support** — ingest and search across several PDFs at once, not just one.
+- **Hybrid search** — combine this semantic (vector) search with keyword search, since some queries (exact names, codes, numbers) are better served by keyword matching.
+- **A real front-end** — wrap this in a Streamlit or Gradio app instead of a notebook that has to be run cell by cell.
+- **Multi-turn conversation** — give it memory of earlier questions in the same session.
+- **Wrap it as an API** — expose the RAG logic through a Flask/FastAPI backend so other apps can call it.
+- **An actual agent framework** (e.g. LangChain or LangGraph) — a real multi-step agent that decides whether to search the document, ask a clarifying question, or answer directly, rather than this simpler linear pipeline.
+- **A proper evaluation suite** — run a batch of test questions with known correct answers and measure how often the grounded answer is actually correct versus the ungrounded one, turning the hallucination demo into a repeatable benchmark.
+
 ## Notes
 
 Built as part of an Edureka AI Bootcamp exercise on Retrieval-Augmented Generation. The bootcamp's own course materials (problem statement, solution walkthrough, slides) are excluded from this repository as they're the provider's copyrighted content — only the implementation here is original work.
